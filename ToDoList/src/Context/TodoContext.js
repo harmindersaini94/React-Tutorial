@@ -10,21 +10,16 @@ update todo
 delete todo
 toggle todo to mark that it is complete
 */
- export const todoContext = createContext({
-    todoArray:[{
-        id:Date.now(),
-        todoText:"HEllo",
-        completed: false
-    }],
-
-    addTodo : (todoObj) => {},
+ export const TodoContext = createContext({
+    todoArray : [],
+    addTodo : (todoText) => {},
     updateTodo : (id, todoText) => {},
     deleteTodo : (id) => {},
     toggleTodo : (id) => {}
 });
 
-export const todoProvider = todoContext.Provider
-
-export function useTodo(){
-    return useContext(todoContext)
+export const useTodo = () =>{
+    return useContext(TodoContext)
 }
+export const TodoProvider = TodoContext.Provider
+
