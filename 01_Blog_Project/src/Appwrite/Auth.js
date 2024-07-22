@@ -43,6 +43,16 @@ class AppwriteAuth{
         }
     }
 
+    async getCurrentUser() {
+        try {
+            return await this.account.get();
+        } catch (error) {
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
+        }
+
+        return null;
+    }
+
     // Another method to check at any time that we are logged in or not
     async isLoggedIn() {
         try {
