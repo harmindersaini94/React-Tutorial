@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import objAppWrite from '../Appwrite/Auth'
 import {useForm} from 'react-hook-form'  // <-- This we will always import while working with forms
 
-function signup() {
+export function Signup() {
     const navigate = useNavigate()
     const dispatch = useDispatch
 
@@ -91,5 +91,3 @@ function signup() {
         </div>
       )
 }
-
-export default signup

@@ -5,5 +5,12 @@ import Logo from './Logo'
 import LogoutBtn from './Header/LogoutBtn'
 import Input from './Input'
 import Button from './Button'
+import Select from './Select'
+import RTE from './RTE'
+import {Signup} from './signup'
+import {Login} from './Login'
+import PostCard from './PostCard'
+import PostForm from './post-form/PostForm'
+import Protected from './Protected'
 
-export {Footer, Header, Container, Logo, LogoutBtn, Button, Input}
+export {Footer, Header, Container, Logo, LogoutBtn, Button, Input, Select, RTE, Signup, Login, PostCard,PostForm,Protected}

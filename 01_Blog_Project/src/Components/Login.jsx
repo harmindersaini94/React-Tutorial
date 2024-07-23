@@ -7,7 +7,7 @@ import objAppWrite from '../Appwrite/Auth'
 import {useForm} from 'react-hook-form'  // <-- This we will always import while working with forms
 
 
-export default function Login() {
+export function Login() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -89,3 +89,5 @@ export default function Login() {
     </div>
   )
 }
+
+
