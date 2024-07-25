@@ -119,11 +119,13 @@ export class BlogDatabase{
         }
     }
 
-    async PreviewFile({fileId}){
+    // async PreviewFile({fileId}){
+     PreviewFile(fileId){
+        console.log("Image here 123", fileId)
         try {
-            return await this.storage.getFilePreview(
+            return this.storage.getFilePreview(
                 envObj.BUCKET_ID,
-                fileId
+                fileId.toString()
             )
         } catch (error) {
             throw error

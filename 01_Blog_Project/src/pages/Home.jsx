@@ -7,7 +7,6 @@ function Home() {
 
     useEffect(() => {
         blogDatabaseObj.GetActiveBlog().then((posts) => {
-            console.log(posts)
             if (posts) {
                 setPosts(posts.documents)
             }
@@ -35,6 +34,7 @@ function Home() {
                 <div className='flex flex-wrap'>
                     {posts.map((post) => (
                         <div key={post.$id} className='p-2 w-1/4'>
+                            {console.log("post hete", post)}
                             <PostCard {...post} />
                         </div>
                     ))}
