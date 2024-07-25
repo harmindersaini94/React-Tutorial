@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import {useForm} from 'react-hook-form'
 import {Button, Input,Select, RTE } from '../index'
 import blogDatabaseObj from '../../Appwrite/Database'
@@ -26,9 +26,45 @@ export default function PostForm({ post }) {
     });
 
     const navigate = useNavigate();
-    const userData = useSelector((state) => state.auth.userData);
+    const userData = useSelector(state => state.userData);
+    console.log("User data state from use Selector " ,userData.$id)
 
     const submit = async (data) => {
+
+        if (post) {
+            const file = data.image[0] ? await blogDatabaseObj.UploadFile(data.image[0]) : null;
+
+            if (file) {
+                blogDatabaseObj.DeleteFile(post.featuredImage);
+            }
+
+            const dbPost = await blogDatabaseObj.UpdateBlog(post.$id, {
+                ...data,
+                featuredImage: file ? file.$id : undefined,
+            });
+
+            if (dbPost) {
+                navigate(`/post/${dbPost.$id}`);
+            }
+        } else {
+            console.log(data.image[0])
+            const file = await blogDatabaseObj.UploadFile(data.image[0]);
+
+            if (file) {
+                const fileId = file.$id;
+                data.featuredImage = fileId;
+
+                console.log("Helllo", userData)
+               
+                const dbPost = await blogDatabaseObj.CreateBlog({ ...data, userId: userData.$id });
+
+                console.log("Helllo", data)
+
+                if (dbPost) {
+                    navigate(`/post/${dbPost.$id}`);
+                }
+            }
+        }
     };
 
     const slugTransform = useCallback((value) => {
@@ -83,7 +119,7 @@ export default function PostForm({ post }) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
+                            src={blogDatabaseObj.PreviewFile(post.featuredImage)}
                             alt={post.title}
                             className="rounded-lg"
                         />

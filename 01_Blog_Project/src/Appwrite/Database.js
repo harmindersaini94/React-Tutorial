@@ -14,7 +14,8 @@ export class BlogDatabase{
         this.storage = new Storage(this.client);
     }
 
-    async CreateBlog({title, slug, content, featuredImage, status, userID}){
+    async CreateBlog({title, slug, content, featuredImage, status, userId}){
+        console.log("userID: ", userId)
         try {
             const result = await this.database.createDocument(
                 envObj.DATABASE_ID,
@@ -25,13 +26,12 @@ export class BlogDatabase{
                     content,
                     featuredImage,
                     status,
-                    userID
+                    userId
                 }
             )
             return result
         } catch (error) {
-            throw error;
-            return null;
+            console.log("Appwrite serive :: createPost :: error", error);
         }
     }
 
@@ -94,8 +94,10 @@ export class BlogDatabase{
 
     // File Upload
 
-    async UploadFile({featuredImage}){
+    // async UploadFile({featuredImage}){
+    async UploadFile(featuredImage){
         try {
+            console.log("featuredImage" ,featuredImage)
             return await this.storage.createFile(
                 envObj.BUCKET_ID,
                 ID.unique(),

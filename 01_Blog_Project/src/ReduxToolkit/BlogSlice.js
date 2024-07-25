@@ -6,14 +6,7 @@ import {createSlice} from '@reduxjs/toolkit'
 // export reducer methods 
 
 const initialState = {
-    userData : [{
-        title: "Blog 1",
-        slug: "Blog-1", 
-        content: "Blog Content",
-        featuredImage: 1,
-        status: true,
-        userID: 123
-    }],
+    userData : null,
     status : false
 }
 

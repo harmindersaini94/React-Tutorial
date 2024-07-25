@@ -24,7 +24,8 @@ export function Login() {
                 // If we get a session then wwe get the user data
                 const userData = await objAppWrite.getCurrentUser()
                 if(userData){
-                    useDispatch(authLogin(userData))
+                    dispatch(authLogin(userData))
+                    console.log("Data After Login ", userData)
                     navigate("/") // Here navigate programatically dusre page par bhej dta hai, Link click krne pr bheta
                 }
             }

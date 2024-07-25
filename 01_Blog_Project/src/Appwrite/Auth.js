@@ -17,12 +17,14 @@ class AppwriteAuth{
     }
 
     // we are assuming that the user wil pass a obj with email, password and username, so we are directly destructuring here
-     createAccount = async ({name, email, password}) => {
+    async createAccount ({name, email, password}) {
         // we are gonna make use of async and await here, can also use promise  no issue
         try {
             // we can put some error check here 
             // ID.unique() is what appwrite required, so that is why we are creating one. ID is provded by appwrite itself
-            const accountCreated = await this.account.create(ID.unique(), name, email, password);
+            console.log("I am here")
+            const accountCreated = await this.account.create(ID.unique(), email, password, name);
+            console.log(accountCreated)
             if(accountCreated){
                 // Call method to login directly
                 return LoginAccount({email, password})

@@ -13,7 +13,7 @@ function LogoutBtn() {
     Aur ye sab kaam krna hai button click pr
     */
 
-    clickHandler = () => {
+    const clickHandler = () => {
         objAppWrite.Logout()
         .then( () => {
             // If control comes here means logout ho gya, now update store

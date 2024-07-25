@@ -33,7 +33,7 @@ return (
             {
                (options.length > 0 && (
                 options.map((item) => (
-                    <option id={item} value={item}>
+                    <option key={item} value={item}>
                         {item}
                     </option>
                 ))

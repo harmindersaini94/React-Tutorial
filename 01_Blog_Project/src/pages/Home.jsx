@@ -7,6 +7,7 @@ function Home() {
 
     useEffect(() => {
         blogDatabaseObj.GetActiveBlog().then((posts) => {
+            console.log(posts)
             if (posts) {
                 setPosts(posts.documents)
             }

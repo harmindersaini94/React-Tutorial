@@ -1,6 +1,7 @@
 import React from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 import {Controller} from 'react-hook-form'
+import {envObj} from '../Config/Config'
 
 /**
  * SO Here we are making use of Controller functionality of react hook from which is an event
@@ -28,6 +29,7 @@ function RTE({name, control, label, defaultValue=""}) {
          */
             render={({field : {onChange}}) => (
                 <Editor
+                apiKey={envObj.TINYMCE_API_KEY}   // <--- DOnt forget to add the API key for TinyMCE
                 initialValue={defaultValue}
                 init={{
                     initialValue: defaultValue,
