@@ -62,7 +62,7 @@ class AppwriteAuth{
             return loggedIn;
             
         } catch (error) {
-            throw error
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
         }
         return null; // Just in case out try catch fail
     }

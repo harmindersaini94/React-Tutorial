@@ -10,8 +10,11 @@ function EditPost() {
 
     useEffect(() => {
         if (slug) {
-            blogDatabaseObj.GetActiveBlog(slug).then((post) => {
+            console.log("Slug Here ", slug)
+            // blogDatabaseObj.GetActiveBlog(slug).then((post) => {
+            blogDatabaseObj.GetBlog(slug).then((post) => {
                 if (post) {
+                    console.log("post here ", post)
                     setPosts(post)
                 }
             })

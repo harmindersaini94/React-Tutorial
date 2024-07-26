@@ -24,9 +24,8 @@ export function Signup() {
             console.log("Here in Signup ", data)
             const userData = await objAppWrite.createAccount(data)
             if(userData){
-                const data = await objAppWrite.getCurrentUser()
+                const data = await objAppWrite.isLoggedIn()
                 if(data)
-                   
                     dispatch(authLogin(data))
                 navigate("/") // slash(/) means home page
             }
