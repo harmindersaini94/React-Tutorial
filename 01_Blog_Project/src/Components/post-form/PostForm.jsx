@@ -78,6 +78,8 @@ export default function PostForm({ post }) {
         return "";
     }, []);
 
+    // SO ye toh chlega harr baar jab user post k title me linkna shuru krega, to setValue automatically isse process krne k baad
+    // slug me saath saath likhna jaayega
     React.useEffect(() => {
         const subscription = watch((value, { name }) => {
             if (name === "title") {
@@ -102,6 +104,8 @@ export default function PostForm({ post }) {
                     placeholder="Slug"
                     className="mb-4"
                     {...register("slug", { required: true })}
+
+                    // Now ye tab chalega jub in case user ne slug wali filed me hi likhna shuru kr diya
                     onInput={(e) => {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
                     }}

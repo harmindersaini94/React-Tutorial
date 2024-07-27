@@ -44,8 +44,8 @@ function App() {
 
   return !loading ? (
     // <div className='min-h-screen flex flex-wrap content-between bg-gray-800'>
-    <div className=' w-full flex flex-wrap content-around   bg-gray-800'>
-      <div className='w-full block'>
+    <div className=' w-full flex flex-wrap content-around bg-gray-800'>
+      <div className='w-full block p-0 '>
         <Header />
         <main>
           <Outlet />
@@ -53,7 +53,9 @@ function App() {
         <Footer />
       </div>
     </div>
+    
   ) : null
+
 }
 
 export default App
